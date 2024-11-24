@@ -3,18 +3,22 @@
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: #C3EEFA;
-}
 .navigation{
     width: 100%;
     height: 100px;
     background-color: #fff;
     box-shadow: 0px 5px 5px 2px #676767;
+    z-index: 5;
+
 }
-.sub-container{
+.button-container{
     padding: 30px 10px ;
     text-align: center;
+}
+#how{
+    background-color: #ffffff;
+    width: 100%;
+    height: 1100px;
 }
 #startButton{
     width: 200px;
@@ -37,3 +41,254 @@ body{
 #head{
     font-size: 50px;
 }
+.menubar{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+.item-navigation,a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 22px;
+}
+.item-navigation{
+    width: 100px;
+    height: 70px;
+    text-align: center;
+    padding: 25px 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    box-shadow: inset 0 0 0 0 #C8FFE1;
+}
+.item-navigation:after{
+    content: "";
+    display: block;
+    width: 0%;
+    height: 5px;
+    background-color: #00D09E;
+    transition: 0.2s;
+}
+.item-navigation:hover:after{
+    width: 100%;
+}
+.sub-container{
+    text-align: center;
+    justify-content: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #e0f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .bubble-container {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+    animation: float-random 10s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: blur(0.5px); /* เบลอ Bubble */
+  }
+  .bubble::after{
+    filter: blur(5px);
+  }
+
+  .bubble span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    filter: none; /* ตัวอักษรไม่เบลอ */
+    z-index: 1;
+  }
+
+  /* Customizing the colors and sizes of bubbles */
+  .bubble[data-emotion="love"] {
+    background: pink;
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .bubble[data-emotion="happy"] {
+    background: yellow;
+    width: 120px;
+    height: 120px;
+    top: 60%;
+    left: 40%;
+    animation-delay: 1s;
+  }
+
+  .bubble[data-emotion="anxious"] {
+    background: magenta;
+    width: 80px;
+    height: 80px;
+    top: 30%;
+    left: 70%;
+    animation-delay: 2s;
+  }
+
+  .bubble[data-emotion="depressed"] {
+    background: blue;
+    width: 140px;
+    height: 140px;
+    top: 70%;
+    left: 20%;
+    animation-delay: 3s;
+  }
+
+  .bubble[data-emotion="jealousy"] {
+    background: lime;
+    width: 90px;
+    height: 90px;
+    top: 40%;
+    left: 50%;
+    animation-delay: 4s;
+  }
+
+  .bubble[data-emotion="grumpy"] {
+    background: orange;
+    width: 100px;
+    height: 100px;
+    top: 10%;
+    left: 80%;
+    animation-delay: 5s;
+  }
+
+  /* Bubble hover effect */
+  .bubble:hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    cursor: pointer;
+    filter: blur(0px); /* Remove blur on hover */
+  }
+
+  .start-btn {
+    padding-top: -50px;
+    width: 500px;
+    height: 50px;
+    font-size: 1rem;
+    background: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .start-btn:hover {
+    background: #3700b3;
+  }
+
+  /* Animation for random floating and looping movement */
+  @keyframes float-random {
+    0% {
+      transform: translate(0px, 0px) rotate(0deg);
+    }
+    25% {
+      transform: translate(20px, -30px) rotate(10deg);
+    }
+    50% {
+      transform: translate(-15px, 20px) rotate(-10deg);
+    }
+    75% {
+      transform: translate(30px, 15px) rotate(5deg);
+    }
+    100% {
+      transform: translate(0px, 0px) rotate(0deg);
+    }
+  }
+  .container-heading{
+    width: 100%;
+    height: 1500px;
+  }
+  .bubble-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .bubble {
+    position: absolute;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    animation: parallax 10s infinite;
+  }
+  
+  @keyframes parallax {
+    0% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(100px, 100px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  
+  .bubble:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 1s;
+  }
+  
+  .bubble:nth-child(2) {
+    top: 20%;
+    left: 30%;
+    animation-delay: 2s;
+  }
+  
+  .bubble:nth-child(3) {
+    top: 30%;
+    left: 50%;
+    animation-delay: 3s;
+  }
+  
+  .bubble:nth-child(4) {
+    top: 40%;
+    left: 70%;
+    animation-delay: 4s;
+  }
+  
+  .bubble:nth-child(5) {
+    top: 50%;
+    left: 90%;
+    animation-delay: 5s;
+  }
+  
+  .bubble:nth-child(6) {
+    top: 60%;
+    left: 10%;
+    animation-delay: 6s;
+  }
+  

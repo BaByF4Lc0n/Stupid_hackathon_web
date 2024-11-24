@@ -1333,3 +1333,8 @@ body {
     justify-content: center;
     text-align: center;
 }
+#randomImage{
+    width: 850px;
+    height: 850px;
+    
+}

@@ -503,7 +503,7 @@
         <div class="sub-container">
             <div class="headding">
                 <h1>ผลการวิเคราะห์</h1>
-                <img src="qr ver 2.png" alt="QR Code">
+                <img id="randomImage" src="" alt="Random Image">
             </div>
             <a href="rickroll clip.mp4">เรียนรู้เพิ่มเติม</a>
         </div>
@@ -523,6 +523,36 @@
             document.querySelector('.loading').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
         }, 20000);
+        const randomImage = document.getElementById('randomImage');
+const imageFiles = [
+  'ฟ้ารักพ่อ.PNG',
+  'จาวิส.PNG',
+  'วิบวับ.PNG',
+  'หนี่อ้ายวอ.PNG',
+  'เนื้อของฉัน.PNG',
+  'Baby shark .PNG',
+  'ชุดนอนไม่ได้นอน.PNG',
+  'หนี่อ้ายวอ.PNG',
+  'ATP.PNG'
+];
+
+// Randomly select an image file from the list
+const randomIndex = Math.floor(Math.random() * imageFiles.length);
+const randomFile = imageFiles[randomIndex];
+
+// Set the src attribute of the img element to the randomly selected image file
+randomImage.src = `Stupid_hackathon_web/${randomFile}`;
+let clickCount = 0; // ตัวนับจำนวนครั้งที่กด
+
+    // ฟังก์ชันตรวจจับการกดในหน้าเว็บ
+    document.addEventListener('click', () => {
+        clickCount++; // เพิ่มตัวนับทีละ 1
+        if (clickCount >= 10) { // ตรวจสอบว่ากดถึง 10 ครั้งหรือไม่
+            alert('กดหาพ่องงงงงง! 😅');
+            alert('รอไม่ได้ไงงงงงงงงงงงงง! ');
+            clickCount = 0; // รีเซ็ตตัวนับหลังจากแจ้งเตือน
+        }
+    });
     </script>
 </body>
 </html>

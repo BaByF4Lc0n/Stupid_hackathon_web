@@ -10,29 +10,72 @@
     <nav class="navigation">
         <div class="container-navi">
             <div class="sub-container">
-                <h1>H O W  A R E  Y O U  F E E L I N G  T O  D A Y</h1>
+                <ul class="menubar">
+                    <li class="item-navigation"><a href="contact.html">Home</a></li>
+                    <li class="item-navigation"><a href="contact.html">About</a></li>
+                    <li class="item-navigation"><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
-<section>
-    <div class="container">
-        <div class="sub-container">
-            <h1 id="head">คุณอยากลองเล่นไหม</h1>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <a href="index.html"><button id="startButton">Start</button></a>
-        </div>
+<div class="contaier-heading">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>How are you feeling today?</h1>
+</div>
+    <div class="bubble-container">
+      <div class="bubble" data-emotion="love">LOVE</div>
+      <div class="bubble" data-emotion="happy">HAPPY</div>
+      <div class="bubble" data-emotion="anxious">ANXIOUS</div>
+      <div class="bubble" data-emotion="depressed">DEPRESSED</div>
+      <div class="bubble" data-emotion="jealousy">JEALOUSY</div>
+      <div class="bubble" data-emotion="grumpy">GRUMPY</div>
     </div>
-</section>
+    <a href="index.html"><button class="start-btn">START</button></a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script>
+      document.addEventListener("mousemove", (event) => {
+      const bubbles = document.querySelectorAll(".bubble");
+      bubbles.forEach(bubble => {
+        const rect = bubble.getBoundingClientRect();
+        const dx = event.clientX - (rect.left + rect.width / 2);
+        const dy = event.clientY - (rect.top + rect.height / 2);
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const maxDist = 100; // Maximum distance to trigger parallax
+
+        if (dist < maxDist) {
+          bubble.style.transform = `translate(${dx / 10}px, ${dy / 10}px) scale(1.1)`;
+        } else {
+          bubble.style.transform = `translate(0, 0) scale(1)`;
+        }
+      });
+      setInterval(() => {
+  bubbles.forEach((bubble) => {
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    bubble.style.top = `${y}px`;
+    bubble.style.left = `${x}px`;
+  });
+}, 1000);
+    });
+    
+    </script>
 </body>
 </html>
