@@ -1,0 +1,82 @@
+int LS = A1;
+int RS = A0;
+int pwm1 = A2;    //มอเตอร์ ขวา ENA
+int RM1 = 6;      //in1
+int RM2 = 7;      //in2
+int pwm2 = A3;    //มอเตอร์ ซ้าย ENB
+int LM1 = 4;      //in3
+int LM2 = 5;      //in4
+int speed = 130;  //ขวา
+  //ซ้าย
+bool boosted = false;
+void setup() {
+  Serial.begin(9600);
+  pinMode(2, INPUT);
+  pinMode(3, INPUT);
+  pinMode(LS, INPUT);
+  pinMode(RS, INPUT);
+  pinMode(pwm1, OUTPUT);
+  pinMode(RM1, OUTPUT);
+  pinMode(pwm2, OUTPUT);
+  pinMode(RM2, OUTPUT);
+  pinMode(LM1, OUTPUT);
+  pinMode(LM2, OUTPUT);
+}
+
+void loop() {
+  int LSval = analogRead(LS);
+  int RSval = analogRead(RS);
+  bool L = LSval < 40;
+  bool R = RSval < 40;
+
+  Serial.print("right = ");
+  Serial.print(RSval);
+  Serial.print(" :: left = ");
+  Serial.print(LSval);
+  Serial.print(" :: L = ");
+  Serial.print(L ? "true" : "false");
+  Serial.print(" :: R = ");
+  Serial.println(R ? "true" : "false");
+
+  if (L && R) {  // forward
+    // if(!boosted){
+    //   speed = 60;
+    //   delay(200);
+    //   boosted = true;
+    // }
+    analogWrite(pwm1, speed);
+    digitalWrite(RM1, HIGH);
+    digitalWrite(RM2, LOW);
+
+    analogWrite(pwm2, speed);
+    digitalWrite(LM1, HIGH);
+    digitalWrite(LM2, LOW);
+
+  } else if (!L && R) {  // turn left
+    analogWrite(pwm1, speed);
+    digitalWrite(RM1, HIGH);
+    digitalWrite(RM2, LOW);
+
+    analogWrite(pwm2, 0);
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, HIGH);
+
+  } else if (L && !R) {  // turn right
+    analogWrite(pwm1, 0);
+    digitalWrite(RM1, LOW);
+    digitalWrite(RM2, HIGH);
+
+    analogWrite(pwm2, speed);
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, LOW);
+
+  } else {  // turn back
+    analogWrite(pwm1, speed);
+    digitalWrite(RM1, LOW);
+    digitalWrite(RM2, LOW);
+
+    analogWrite(pwm2, speed);
+    digitalWrite(LM1, LOW);
+    digitalWrite(LM2, LOW);
+  }
+}

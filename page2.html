@@ -71,7 +71,7 @@
         // สุ่มเลือกรูปภาพจากรายการ
         const randomIndex = Math.floor(Math.random() * imageFiles.length);
         const randomFile = imageFiles[randomIndex];
-        const filePath = `qr/${randomFile}`;
+        const filePath = `${randomFile}`;
         console.log('Generated Image Path:', filePath); // ตรวจสอบ path ของรูปภาพ
 
         // ตั้งค่า src ให้รูป และตรวจสอบหากไฟล์ไม่เจอ
